@@ -71,7 +71,8 @@ Ce document distingue honnêtement ce qui est repris d'une source publiée avec 
 | VM Freebox (Debian 12) + conflit `systemd-resolved` | Article | Testé par l'article |
 | VPS, `access-control` par IP, WireGuard | Article | Décrit par l'article |
 | Test DNSSEC `dnssec-failed.org` | Article | Testé par l'article |
-| Autres distributions, Docker, Termux, Windows, macOS | Ajout | **Non testé** : à valider |
+| Docker, autres distributions, Windows, macOS | Ajout | **Non testé** : à valider |
+| Termux (section 14) : syntaxe, résolution, DNSSEC | Ajout | Testé le 2026-11-25 (Version 1.26.2, Termux) |
 | DoT amont, filtrage de publicités, RPZ, `ip-freebind` | Ajout | **Non testé** : à valider |
 | Commandes clientes (`nmcli`, PowerShell, `networksetup`) | Ajout | **Non testé** : à valider |
 
@@ -604,6 +605,8 @@ dig -p 5335 next.ink @127.0.0.1
 ```
 
 Pour empêcher la mise en veille de couper le processus : `termux-wake-lock` (nécessite l'application Termux:API ou la notification Termux selon votre installation).
+
+Résultats observés le 2026-11-25 sous Termux (Version 1.26.2) : la résolution fonctionne sur le port 5335. Avec l'ancre de confiance ci-dessus, `dnssec-failed.org` renvoie `SERVFAIL` et `nlnetlabs.nl` renvoie le drapeau `ad`. Sans ancre, `dnssec-failed.org` répond `NOERROR` (pas de validation). Lors d'un test, la première requête après le lancement a expiré avant qu'un nouvel essai aboutisse (cause non déterminée) : laissez quelques secondes à unbound avant de tester. `unbound-anchor` affiche un avertissement sur `/proc/sys/net/ipv4/ip_local_port_range` (permission refusée sous Android) sans empêcher la création de `root.key`.
 
 ---
 
