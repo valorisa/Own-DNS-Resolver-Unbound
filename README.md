@@ -1087,6 +1087,6 @@ Merci de joindre, pour chaque proposition, la sortie de `unbound -V` et de la co
 
 ## 26. Licence
 
-À définir par le mainteneur du dépôt (par exemple MIT pour le contenu technique, ou une licence Creative Commons pour le texte). Ajoutez un fichier `LICENSE` à la racine avant de publier.
+Ce dépôt est distribué sous licence MIT : voir le fichier [LICENSE](LICENSE).
 
 Les marques et logiciels cités appartiennent à leurs propriétaires respectifs. unbound est distribué sous licence BSD-3 par NLnet Labs.
